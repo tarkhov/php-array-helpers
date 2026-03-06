@@ -27,4 +27,9 @@ class ArrayHelpers
         $result = array_merge($array, $splicedArray);
         return $result;
     }
+
+    public static function bytes(array $array, int $flags = 0): string
+    {
+        return mb_strlen(json_encode($array, $flags), '8bit');
+    }
 }
