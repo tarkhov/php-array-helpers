@@ -32,4 +32,13 @@ class ArrayHelpers
     {
         return mb_strlen(json_encode($array, $flags), '8bit');
     }
+
+    public static function format(array $array, string $separator = '', string $format = '%s %s'): string
+    {
+        return join($separator, array_map(
+            fn($key, $value): string => sprintf($format, $key, $value),
+            array_keys($array),
+            array_values($array)
+        ));
+    }
 }
